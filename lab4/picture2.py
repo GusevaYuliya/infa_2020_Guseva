@@ -15,28 +15,10 @@ def cloud(a,b,r):
         circle(screen, (255, 255, 255), (c, b), r-2)
         c = c - 50
 
-def tree(a,b,r):
-    c = a
-    d = b
-    circle(screen, (16, 66, 25), (c, d), r, 5)
-    circle(screen, (6, 82, 6), (c, d), r)
-    c = c - (3/2*r)
-    d = d + (3/2*r)
-    circle(screen, (16, 66, 25), (c, d), r, 5)
-    circle(screen, (6, 82, 6), (c, d), r)
-    c = c + (3*r)
-    circle(screen, (16, 66, 25), (c, d), r, 5)
-    circle(screen, (6, 82, 6), (c, d), r)
-    c = c
-    rect(screen, (30, 5, 0), (c, d, 20, 110))
+def circtree(a,b,r):
+    circle(screen, (16, 66, 25), (a, b), r, 5)
+    circle(screen, (6, 82, 6), (a, b), r-4)
 
-    circtree(600, 120)
-    circtree(550, 160)
-    circtree(650, 160)
-    circtree(600, 190)
-
-    circtree(560, 220)
-    circtree(630, 225)
 def sun(a,b,r1,r2,n):
     pi2 = 2*3.14
     for i in range(0, n):
@@ -50,6 +32,7 @@ def home(a,b,c,d):
     rect(screen, (86, 68, 14), (a, b, c, d), 5)
     rect(screen, (148, 107, 6), (a,b,c,d))
     rect(screen, (5, 148, 146), (a+(c/3), b +(d/3), c/3, d/3))
+    rect(screen, (177, 100, 6), (a + (c / 3), b + (d / 3), c / 3, d / 3), 5)
     polygon(screen, (236, 43, 66), [(a, b), (a+(c/2), b-d), (a+c, b)])
     polygon(screen, (86, 68, 14), [(a,b), (a+(c/2),b-d), (a+c,b)], 5)
 
@@ -66,16 +49,21 @@ home(600,320,150,100)
 cloud(200,100,40)
 cloud(450,150,30)
 cloud(850,100,40)
-'''''''''
-circtree(600, 120)
-circtree(550, 160)
-circtree(650, 160)
-circtree(600, 190)
-rect(screen, (30, 5, 0), (585, 245, 20, 110))
-circtree(560, 220)
-circtree(630, 225)
-'''''
+circtree(500, 220, 40)
+circtree(455, 255, 40)
+circtree(545, 255, 40)
+circtree(500, 295, 40)
+rect(screen, (30, 5, 0), (490, 320, 25, 120))
+circtree(465, 320, 40)
+circtree(535, 325, 40)
 sun(80, 80, 30, 40, 25)
+circtree(850, 240, 25)
+circtree(825, 265, 25)
+circtree(875, 265, 25)
+circtree(850, 290, 25)
+rect(screen, (30, 5, 0), (840, 305, 15, 80))
+circtree(825, 305, 25)
+circtree(870, 310, 25)
 
 
 
