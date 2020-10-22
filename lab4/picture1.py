@@ -1,8 +1,6 @@
+import math as m
 import pygame
 from pygame.draw import *
-import math as m
-
-screen = pygame.display.set_mode((800, 520))
 
 def circloud(a,b):
     circle(screen, (149, 146, 146), (a, b), 30, 3)
@@ -10,16 +8,20 @@ def circloud(a,b):
 def circtree(a,b):
     circle(screen, (16, 66, 25), (a, b), 40, 5)
     circle(screen, (6, 82, 6), (a, b), 36)
-#def sun(r,n):
-    #for i in range(0, n):
-   #  line(screen, (249, 195, 195), True, ([100, 100], ((m.cos(i/n*2*3.14)*r+100)//1, (m.sin(i/n*2*3.14)*r+100)//1)))
-  # return lines(screen, (249, 195, 195), True, ([100, 100], (int(round(m.cos(i/n*2*3.14)*r+100)), int(round(m.sin(i/n*2*3.14)*r+100)))))
+def draw_ngon(surface, color, n, radius, position):
+    pi2 = 2 * 3.14
+    for i in range(0,n):
+        line(surface,color,position, (m.cos(i/n*pi2)*radius + position[0], m.sin(i/n*pi2)*radius+position[1]))
+    return lines(surface, color, True, [(m.cos(i/n*pi2)*radius + position[0], m.sin(i/n*pi2)*radius + position[1]) for i in range(0,n)])
+#def sun(a,b,n):
+#    for i in range(0, n):
+#        polygon(screen, (249,195,195), [(a,b), (a+3,b+3), (a,b+6)])
 
 
 pygame.init()
 
 FPS = 30
-
+screen = pygame.display.set_mode((800, 520))
 
 rect(screen, (159, 235, 245), (0, 0, 800, 260))
 rect(screen, (5, 148, 32), (0, 260, 800, 260))
@@ -41,8 +43,8 @@ circtree(600, 190)
 rect(screen, (30, 5, 0), (585, 245, 20, 110))
 circtree(560, 220)
 circtree(630, 225)
-print(m.cos(1/4*2*3.14)*50+100)
-#sun(50, 6)
+draw_ngon(screen, 2, 50, 50, [100,100])
+
 
 
 
