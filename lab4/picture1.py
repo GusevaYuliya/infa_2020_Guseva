@@ -11,8 +11,11 @@ def circtree(a,b):
 def sun(a,b,r1,r2,n):
     pi2 = 2*3.14
     for i in range(0, n):
-       polygon(screen, (249, 195, 195), [(a,b), (m.cos(i/n*pi2)*r1 + a, m.sin(i/n*pi2)*r1 + b), (m.cos((i+1)/n*pi2)*r2+a, m.sin((i+1)/n*pi2)*r2+b), (a,b)])
-       polygon(screen, (249, 195, 195), [(a, b), (m.cos((i+1) / n * pi2) * r2 + a, m.sin((i+1) / n * pi2) * r2 + b),(m.cos((i+2) / n * pi2) * r1 + a, m.sin((i + 2) / n * pi2) * r1 + b),(a, b)])
+        polygon(screen, (125, 148, 152), [(a, b), (m.cos(i / n * pi2) * r1 + a, m.sin(i / n * pi2) * r1 + b),(m.cos((i + 1) / n * pi2) * r2 + a, m.sin((i + 1) / n * pi2) * r2 + b),(a, b)], 2)
+        polygon(screen, (125, 148, 152),[(a, b), (m.cos((i + 1) / n * pi2) * r2 + a, m.sin((i + 1) / n * pi2) * r2 + b),(m.cos((i + 2) / n * pi2) * r1 + a, m.sin((i + 2) / n * pi2) * r1 + b), (a, b)], 2)
+        polygon(screen, (249, 195, 195), [(a,b), (m.cos(i/n*pi2)*r1 + a, m.sin(i/n*pi2)*r1 + b), (m.cos((i+1)/n*pi2)*r2+a, m.sin((i+1)/n*pi2)*r2+b), (a,b)])
+        polygon(screen, (249, 195, 195), [(a, b), (m.cos((i+1) / n * pi2) * r2 + a, m.sin((i+1) / n * pi2) * r2 + b),(m.cos((i+2) / n * pi2) * r1 + a, m.sin((i + 2) / n * pi2) * r1 + b),(a, b)])
+        circle(screen, (249, 195, 195), (a,b+2), 31)
 
 
 pygame.init()
@@ -40,7 +43,7 @@ circtree(600, 190)
 rect(screen, (30, 5, 0), (585, 245, 20, 110))
 circtree(560, 220)
 circtree(630, 225)
-sun(720, 80, 30, 40, 20)
+sun(720, 80, 30, 40, 25)
 
 
 
