@@ -8,14 +8,11 @@ def circloud(a,b):
 def circtree(a,b):
     circle(screen, (16, 66, 25), (a, b), 40, 5)
     circle(screen, (6, 82, 6), (a, b), 36)
-def draw_ngon(surface, color, n, radius, position):
-    pi2 = 2 * 3.14
-    for i in range(0,n):
-        line(surface,color,position, (m.cos(i/n*pi2)*radius + position[0], m.sin(i/n*pi2)*radius+position[1]))
-    return lines(surface, color, True, [(m.cos(i/n*pi2)*radius + position[0], m.sin(i/n*pi2)*radius + position[1]) for i in range(0,n)])
-#def sun(a,b,n):
-#    for i in range(0, n):
-#        polygon(screen, (249,195,195), [(a,b), (a+3,b+3), (a,b+6)])
+def sun(a,b,r1,r2,n):
+    pi2 = 2*3.14
+    for i in range(0, n):
+       polygon(screen, (249, 195, 195), [(a,b), (m.cos(i/n*pi2)*r1 + a, m.sin(i/n*pi2)*r1 + b), (m.cos((i+1)/n*pi2)*r2+a, m.sin((i+1)/n*pi2)*r2+b), (a,b)])
+       polygon(screen, (249, 195, 195), [(a, b), (m.cos((i+1) / n * pi2) * r2 + a, m.sin((i+1) / n * pi2) * r2 + b),(m.cos((i+2) / n * pi2) * r1 + a, m.sin((i + 2) / n * pi2) * r1 + b),(a, b)])
 
 
 pygame.init()
@@ -43,7 +40,7 @@ circtree(600, 190)
 rect(screen, (30, 5, 0), (585, 245, 20, 110))
 circtree(560, 220)
 circtree(630, 225)
-draw_ngon(screen, 2, 50, 50, [100,100])
+sun(720, 80, 30, 40, 20)
 
 
 
