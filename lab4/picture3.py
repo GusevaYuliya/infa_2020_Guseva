@@ -25,15 +25,19 @@ def people(a, x, y):
         window.fill((255, 255, 255))
         rect(window, (112, 239, 243), (0, 0, 200, 250))
         rect(window, (41, 212, 92), (0, 250, 200, 250))
-        polygon(screen, (255, 78, 231), [(300, 215), (270, 340), (330, 340)])
-        circle(screen, (255, 255, 255), (300, 215), 25)
-        line(screen, (0, 0, 0), (197, 300), (290, 252))
-        line(screen, (0, 0, 0), (310, 251), (340, 265))
-        line(screen, (0, 0, 0), (340, 265), (370, 251))
+        polygon(window, (255, 78, 231), [(100, 215), (70, 340), (130, 340)])
+        circle(window, (255, 255, 255), (100, 215), 25)
+        line(window, (0, 0, 0), (0, 300), (90, 252))
+        line(window, (0, 0, 0), (110, 251), (140, 265))
+        line(window, (0, 0, 0), (140, 265), (170, 251))
+        if a == 3:
+            window = pygame.transform.flip(window, True, False)
         screen.blit(window, (x, y))
 
 
 people(1, 0, 0)
+people(2, 200, 0)
+people(3, 400, 0)
 '''
 #background
 rect(screen,   (112, 239, 243),  (0,   0,   800, 250))
