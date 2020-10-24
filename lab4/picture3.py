@@ -5,22 +5,36 @@ pygame.init()
 
 FPS = 30
 
-screen = pygame.display.set_mode((700, 500))
+screen = pygame.display.set_mode((800, 500))
+
+
 
 def people(a, x, y):
-    if a=0:
-        ellipse(screen, (210, 121, 238), (110, 230, 50, 110))
-        circle(screen, (255, 255, 255), (135, 215), 25)
-        line(screen, (0, 0, 0), (72, 297), (117, 252))
-        line(screen, (0, 0, 0), (152, 252), (197, 300))
+    if a == 1 or a == 4:
+        window = pygame.Surface((200, 500))
+        window.fill((255, 255, 255))
+        rect(window, (112, 239, 243), (0, 0, 200, 250))
+        rect(window, (41, 212, 92), (0, 250, 200, 250))
+        ellipse(window, (210, 121, 238), (110, 230, 50, 110))
+        circle(window, (255, 255, 255), (135, 215), 25)
+        line(window, (0, 0, 0), (72, 297), (117, 252))
+        line(window, (0, 0, 0), (152, 252), (197, 300))
+        screen.blit(window, (x, y))
     else:
+        window = pygame.Surface((200, 500))
+        window.fill((255, 255, 255))
+        rect(window, (112, 239, 243), (0, 0, 200, 250))
+        rect(window, (41, 212, 92), (0, 250, 200, 250))
         polygon(screen, (255, 78, 231), [(300, 215), (270, 340), (330, 340)])
         circle(screen, (255, 255, 255), (300, 215), 25)
         line(screen, (0, 0, 0), (197, 300), (290, 252))
         line(screen, (0, 0, 0), (310, 251), (340, 265))
         line(screen, (0, 0, 0), (340, 265), (370, 251))
+        screen.blit(window, (x, y))
 
 
+people(1, 0, 0)
+'''
 #background
 rect(screen,   (112, 239, 243),  (0,   0,   800, 250))
 rect(screen,   (41,  212, 92),   (0,   250, 800, 250))
@@ -72,7 +86,7 @@ polygon(screen,(243, 243, 1),   [(645,300),(652,253),(685,280)])
 circle(screen, (114, 58,  16),   (665,257),  15)
 circle(screen, (255, 10,  10),   (680,269),  15)
 circle(screen, (255, 255, 255),  (680,247),  15)
-
+'''
 
 pygame.display.update()
 clock = pygame.time.Clock()
