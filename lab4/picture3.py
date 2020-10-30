@@ -19,6 +19,7 @@ def people(a, x, y, t):
         line(window, (0, 0, 0), (140*t//4, 400*t//4), (150*t//4, 400*t//4))
         ellipse(window, (210, 121, 238), (110*t//4, 230*t//4, 50*t//4, 110*t//4))
         circle(window, (254, 255, 255), (135*t//4, 215*t//4), 25*t//4)
+        face(window,135*t//4, 215*t//4)
         line(window, (0, 0, 0), (72*t//4, 297*t//4), (117*t//4, 252*t//4))
         line(window, (0, 0, 0), (152*t//4, 252*t//4), (200*t//4, 300*t//4))
 
@@ -33,6 +34,7 @@ def people(a, x, y, t):
         line(window, (0, 0, 0), (110, 400), (120, 400))
         polygon(window, (255, 78, 231), [(100, 215), (70, 340), (130, 340)])
         circle(window, (255, 255, 255), (100, 215), 25)
+        face(window, 100, 215)
         line(window, (0, 0, 0), (0, 300), (90, 252))
         line(window, (0, 0, 0), (110, 251), (140, 265))
         line(window, (0, 0, 0), (140, 265), (170, 251))
@@ -40,6 +42,10 @@ def people(a, x, y, t):
         window = pygame.transform.flip(window, True, False)
     screen.blit(window, (x, y))
 
+def face(s, a, b):
+    circle(s,(0, 0, 0), (a+10, b-8), 5)
+    circle(s,(0, 0 ,0), (a-10, b-8), 5)
+    arc(s, (0, 0, 0), (a-10, b+7, 15, 8), 3.14, 0)
 
 
 
