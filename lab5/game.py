@@ -4,7 +4,7 @@ from random import randint
 
 pygame.init()
 
-FPS = 60
+FPS = 70
 screen = pygame.display.set_mode((1200, 800))
 
 maxx=1200
@@ -27,44 +27,53 @@ def haracterball(n,m):
 
 
 
-cdvig = [-3, -2, -1, 1, 2, 3]
+cdvig = [-6, -5, -4, 4, 5, 6]
 
 sum = 0
 
 clock = pygame.time.Clock()
 finished = False
-click = False
+
 
 x = haracterball(100, 700)
 y = haracterball(100, 500)
 r = haracterball(30, 50)
 color = COLORS[randint(0, 5)]
-vx = cdvig[randint(0, 5)]
-vy = cdvig[randint(0, 5)]
+vx = [cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)]]
+vy = [cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)], cdvig[randint(0, 5)]]
 
 while not finished:
     click = False
-    while (finished == False) and (click == False):
+    while finished == False:
         for i in range(5):
             circle(screen, color, (x[i], y[i]), r[i])
-            x[i] = x[i] + vx
-            y[i] = y[i] + vy
+            x[i] = x[i] + vx[i]
+            y[i] = y[i] + vy[i]
             clock.tick(FPS)
             if x[i] + r[i] >= maxx or x[i] - r[i] <= 0:
-                vx = vx * (-1)
+                vx[i] = vx[i] * (-1)
             if y[i] + r[i] >= maxy or y[i] - r[i] <= 0:
-                vy = vy * (-1)
+                vy[i] = vy[i] * (-1)
         pygame.display.update()
         screen.fill(BLACK)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 finished = True
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                print('Click!')
-                if (x - event.pos[0]) ** 2 + (y - event.pos[1]) ** 2 <= r ** 2:
-                    sum += 1
-                    print('счет ', sum)
-                    click = True
+                for i in range(5):
+                    if (x[i] - event.pos[0]) ** 2 + (y[i] - event.pos[1]) ** 2 <= r[i] ** 2:
+                        sum += 1
+                        print('счет ', sum)
+                        r[i] = 0
+        k=0
+        for i in range(5):
+            if r[i] == 0:
+                k = k + 1
+        if k == 5:
+            finished = True
+
+
+
 
 
 pygame.quit()
