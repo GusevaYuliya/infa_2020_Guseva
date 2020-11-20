@@ -4,7 +4,7 @@ from random import randint
 
 pygame.init()
 
-FPS = 40
+FPS = 60
 screen = pygame.display.set_mode((1200, 800))
 
 maxx=1200
@@ -19,39 +19,41 @@ CYAN = (0, 255, 255)
 BLACK = (0, 0, 0)
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
+def haracterball(n,m):
+    coord = []
+    for i in range(5):
+        coord.append(randint(n, m))
+    return coord
+
+
+
 cdvig = [-3, -2, -1, 1, 2, 3]
 
 sum = 0
-
-def new_balls(x,y,r, color):
-    circle(screen, color, (x, y), r)
-# def another(x,y,r):
-# circle(screen,BLUE,(x+10,y+10),r)
-
-
-
 
 clock = pygame.time.Clock()
 finished = False
 click = False
 
+x = haracterball(100, 700)
+y = haracterball(100, 500)
+r = haracterball(30, 50)
+color = COLORS[randint(0, 5)]
+vx = cdvig[randint(0, 5)]
+vy = cdvig[randint(0, 5)]
+
 while not finished:
-    x = randint(100, 700)
-    y = randint(100, 500)
-    r = randint(30, 50)
-    color = COLORS[randint(0, 5)]
-    vx = cdvig[randint(0, 5)]
-    vy = cdvig[randint(0, 5)]
     click = False
     while (finished == False) and (click == False):
-        new_balls(x, y, r, color)
-        x = x + vx
-        y = y + vy
-        clock.tick(FPS)
-        if x+r >= maxx or x-r <= 0:
-            vx = vx * (-1)
-        if y+r >= maxy or y-r <= 0:
-            vy = vy * (-1)
+        for i in range(5):
+            circle(screen, color, (x[i], y[i]), r[i])
+            x[i] = x[i] + vx
+            y[i] = y[i] + vy
+            clock.tick(FPS)
+            if x[i] + r[i] >= maxx or x[i] - r[i] <= 0:
+                vx = vx * (-1)
+            if y[i] + r[i] >= maxy or y[i] - r[i] <= 0:
+                vy = vy * (-1)
         pygame.display.update()
         screen.fill(BLACK)
         for event in pygame.event.get():
