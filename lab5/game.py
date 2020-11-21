@@ -4,8 +4,8 @@ from random import randint
 
 pygame.init()
 
-print('введите сложность уровня от 10 до 99')
-level = int(input())
+name = input('введите имя игрока ', )
+level = int(input('введите сложность уровня от 10 до 99 ', ))
 t = level // 10
 s = level % 10
 
@@ -56,8 +56,8 @@ finished = False
 
 while not finished:
     while finished == False:
+        '''рисуем круги'''
         for i in range(t):
-            '''рисуем круги'''
             circle(screen, color[i], (xb[i], yb[i]), r[i])
             xb[i] = xb[i] + vxb[i]
             yb[i] = yb[i] + vyb[i]
@@ -66,8 +66,8 @@ while not finished:
                 vxb[i] = vxb[i] * (-1)
             if yb[i] + r[i] >= maxy or yb[i] - r[i] <= 0:
                 vyb[i] = vyb[i] * (-1)
+        '''рисуем квадраты'''
         for i in range(s):
-            '''рисуем квадраты'''
             rect(screen, color[i], (xr[i], yr[i], ar[i], br[i]))
             xr[i] = xr[i] + vxr[i]
             yr[i] = yr[i] + vyr[i]
@@ -82,6 +82,7 @@ while not finished:
                 yr[i] = maxy - 1 - br[i]
         pygame.display.update()
         screen.fill(BLACK)
+        '''проверка на попадание в цель'''
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 finished = True
@@ -104,10 +105,12 @@ while not finished:
             if ar[i] == 0:
                 k = k + 1
         if k == t + s:
+            print(name, 'итоговый счет: ', sum)
             finished = True
 
-
-
-
-
 pygame.quit()
+
+str = name + ' ' + str(sum) + ' '
+f = open('igroki.txt', 'a')
+f.write(str)
+f.close()
