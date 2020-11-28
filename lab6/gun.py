@@ -142,16 +142,16 @@ class target():
         canv.itemconfig(self.id_points, text=self.points)
 
 
-# t1 = target()
-# screen1 = canv.create_text(400, 300, text='', font='28')
-# g1 = gun()
-# bullet = 0
-# balls = []
+t1 = target()
+screen1 = canv.create_text(400, 300, text='', font='28')
+g1 = gun()
+bullet = 0
+balls = []
 
 
 def new_game(event=''):
     global gun, t1, screen1, balls, bullet
-    # t1.new_target()
+    t1.new_target()
     bullet = 0
     balls = []
     canv.bind('<Button-1>', g1.fire2_start)
@@ -178,6 +178,6 @@ def new_game(event=''):
     root.after(750, new_game)
 
 
-# new_game()
+new_game()
 
-# mainloop()
+mainloop()
