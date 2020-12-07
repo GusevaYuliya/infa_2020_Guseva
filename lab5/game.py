@@ -110,6 +110,7 @@ while not finished:
 
 pygame.quit()
 
+''' записывает имена игроков в файл'''
 str = name + ' ' + str(sum) + ' '
 f = open('igroki.txt', 'a')
 f.write(str)
