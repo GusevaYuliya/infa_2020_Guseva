@@ -34,7 +34,7 @@ def haracterfig(n, m, l):
         coord.append(randint(n, m))
     return coord
 
-'''задаем характеристики кругов'''
+'''задаём характеристики кругов'''
 xb = haracterfig(100, 700, t)
 yb = haracterfig(100, 500, t)
 r = haracterfig(30, 50, t)
