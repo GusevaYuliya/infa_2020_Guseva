@@ -191,7 +191,7 @@ class target():
             self.x = self.r + 1
 
     def hit(self):
-        """Попадание шарика в цель."""
+        """Попадание шарика в цель"""
         global points, screen_points
         self.live -= 1
         if self.live <= 0:
